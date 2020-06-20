@@ -78,7 +78,7 @@ class Inputs():
                 distance = nx.shortest_path_length(g,source = temp1,target = temp2)
                 print(distance)
                 matrix[row,column] = distance
-        return matrix
+        return matrix, lat_lon, demand
 
 
 
