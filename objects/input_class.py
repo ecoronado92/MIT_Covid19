@@ -76,12 +76,5 @@ class Inputs():
             for column in range(num_points):
                 temp2 = ox.get_nearest_node(g,lat_lon[column])
                 distance = nx.shortest_path_length(g,source = temp1,target = temp2)
-                print(distance)
                 matrix[row,column] = distance
         return matrix, lat_lon, demand
-
-
-
-
-distance = Inputs().cost_matrix(5)
-print(distance)
