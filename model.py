@@ -10,6 +10,14 @@ from tqdm import tqdm
 from objects.input_class import Inputs
 
 
+"""
+route optimization algorithm V1
+Simulates random points, computes cost matrix and minimized cost).
+Computes which trucks should distribute which covending machines.
+
+
+"""
+
 
 def create_data_model(num_vehicles,num_points):
     """Stores the data for the problem."""
