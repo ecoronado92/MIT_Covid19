@@ -15,7 +15,6 @@ route optimization algorithm V1
 Simulates random points, computes cost matrix and minimized cost).
 Computes which trucks should distribute which covending machines.
 
-
 """
 
 
@@ -119,7 +118,7 @@ def solucionar(num_vehicles,num_points):
     if assignment:
         print_solution(data, manager, routing, assignment)
     else:
-        print("nada")
+        print("No feasible solution found")
 
 
 
