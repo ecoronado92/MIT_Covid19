@@ -118,7 +118,12 @@ app.layout = html.Div(children=[
                                                                     'zeroline': False},
                                                     
                                                             )}
-                                                       )
+                                                       ),
+                                               html.H2('Supply-chain Route Optimization'),
+                                               html.Iframe(id = 'mapa1', 
+                                                        srcDoc = open('folium.html','r').read(),
+                                                        height = '600',
+                                                        style = {'margin':'2px'})
                                           ])
                                ])
 ])
