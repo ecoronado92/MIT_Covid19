@@ -29,7 +29,6 @@ df_melt['machine_capacity'] = 100
 df_melt['current_remain_perc'] = df_melt['current_count']/100 # turn into frequencies
 
 hospital_names = df.Name.unique()
-today_date = dt.today().date().strftime('%Y-%m-%d')
 
 
 # Layout
@@ -133,11 +132,7 @@ app.layout = html.Div(children=[
 def update_map(map_date): 
     '''Update map based on date selected'''
     
-    #date
     # Filter for selected date
-    #if map_date is None:
-    #   df_sub = df_melt[df_melt['date'] == today_date]
-    #else:
     df_sub = df_melt[df_melt['date'] == map_date]
     
     # Plot and update layout
@@ -178,8 +173,6 @@ def update_trends(start_date, end_date, dropdown_value):
     '''Update trendlines based on date range and selected hospital'''
     
     # Filter for dates
-    #start_date = dt.strptime(start_date, "%Y-%m-%d")
-    #end_date = dt.strptime(end_date, "%Y-%m-%d")
     df_sub = df_melt[(df_melt['date'] >= start_date) & (df_melt['date']<= end_date)]
     
     # Plot first hospital at start, when selected plot whatever is selected
