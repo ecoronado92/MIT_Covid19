@@ -41,8 +41,8 @@ app.layout = html.Div(children=[
                                               html.Img(className='logo',src=app.get_asset_url("covending_logo2.png")),
                                               
                                               # Actualizacion del mapa
-                                              html.H2('Búsqueda de suministros por fecha'),
-                                              html.P("Seleccione fecha inicial"),
+                                              html.H2('Search supplies by date'),
+                                              html.P("Select start date"),
                                               dcc.DatePickerSingle(
                                                   id='map-date',
                                                   min_date_allowed=dt(2020, 4, 22),
@@ -56,8 +56,9 @@ app.layout = html.Div(children=[
                                               html.Br(),
                                               html.Br(),
                                               html.Div(children=[
-                                                   html.H6('Información importante'),
-                                                   html.Img(className='infographic',src=app.get_asset_url("n95Diagrama2.png"))
+                                                   html.H6('Relevant Information'),
+                                                   html.Img(className='infographic',
+                                                            src=app.get_asset_url("FaceMaskFlowchart.jpg"))
                                               ])
                                             
                                           ]),
@@ -66,7 +67,7 @@ app.layout = html.Div(children=[
                                   html.Div(className='eight columns div-for-charts bg-grey',
                                           children=[
                                               # Map
-                                              html.H2('Abastecimiento de hospitales en la ciudad de Lima'),
+                                              html.H2('Hospital PPE supplies in Lima'),
                                               dcc.Graph(id='map-scatter', # build a blank graph at start
                                                         figure={
                                                             'data': [],
@@ -85,7 +86,7 @@ app.layout = html.Div(children=[
                                                        ),
                                               
                                               # Trendline charts
-                                              html.H2('Tendencias de abastecimiento'),
+                                              html.H2('PPE Supply Trends'),
                                               dcc.DatePickerRange(
                                                   id="date-query",
                                                   display_format='D/MM/Y',
@@ -99,7 +100,7 @@ app.layout = html.Div(children=[
                                               dcc.Dropdown(id='dropdown', 
                                                            options=[{'label': i, 'value': i} for i in hospital_names], 
                                                            multi=True,
-                                                           placeholder='Filtrar hospitales...'),
+                                                           placeholder='Filter hospitals...'),
                                               
                                               dcc.Graph(id='map-trends', # same as above, blank chart
                                                         figure={
@@ -190,8 +191,8 @@ def update_trends(start_date, end_date, dropdown_value):
                       uniformtext_minsize=12,
                       legend=dict(font_family='Helvetica Neue', font_color='#FFF', title="Hospital"),
                       font_color='#FFF',
-                      xaxis_title="Fechas",
-                      yaxis_title="Abastecimiento",)
+                      xaxis_title="Dates",
+                      yaxis_title="PPE Counts in Hospital",)
     fig2.update_xaxes(title_font=dict(size=18, family='Helvetica Neue', color='#FFF'))
     fig2.update_yaxes(title_font=dict(size=18, family='Helvetica Neue', color='#FFF'))
     
