@@ -27,6 +27,7 @@ df_melt = df.melt(id_vars=['Name', 'Place_id', 'Latitude', 'Longitude', 'Type'],
 # Add machine capacity column
 df_melt['machine_capacity'] = 100
 df_melt['current_remain_perc'] = df_melt['current_count']/100 # turn into frequencies
+
 hospital_names = df.Name.unique()
 today_date = dt.today().date().strftime('%Y-%m-%d')
 
@@ -46,9 +47,9 @@ app.layout = html.Div(children=[
                                               dcc.DatePickerSingle(
                                                   id='map-date',
                                                   min_date_allowed=dt(2020, 4, 22),
-                                                  max_date_allowed=dt.today().date()- timedelta(days=1),
-                                                  initial_visible_month=dt.today().date() ,
-                                                  date=dt.today().date(),
+                                                  max_date_allowed=dt(2020, 6, 20),
+                                                  initial_visible_month=dt(2020, 6, 20).date() ,
+                                                  date=dt(2020, 6, 20).date(),
                                                   display_format='DD/MM/Y',
                                                   month_format='MMM Do, YYYY'),
                                               
@@ -91,9 +92,9 @@ app.layout = html.Div(children=[
                                                   display_format='D/MM/Y',
                                                   month_format='MMM Do, YYYY',
                                                   min_date_allowed=dt(2020, 4, 22),
-                                                  max_date_allowed=dt.today(),
-                                                  start_date=dt.today().date() - timedelta(days=30),
-                                                  end_date = dt.today().date()
+                                                  max_date_allowed=dt(2020, 6, 21),
+                                                  start_date=dt(2020, 4, 22).date(),
+                                                  end_date = dt(2020, 6, 20).date()
                                               ),
                                               html.Br(),
                                               dcc.Dropdown(id='dropdown', 
@@ -131,11 +132,13 @@ app.layout = html.Div(children=[
 )
 def update_map(map_date): 
     '''Update map based on date selected'''
+    
+    #date
     # Filter for selected date
-    if map_date is None:
-        df_sub = df_melt[df_melt['date'] == today_date]
-    else:
-        df_sub = df_melt[df_melt['date'] == map_date]
+    #if map_date is None:
+    #   df_sub = df_melt[df_melt['date'] == today_date]
+    #else:
+    df_sub = df_melt[df_melt['date'] == map_date]
     
     # Plot and update layout
     fig = px.scatter_mapbox(df_sub, lat="Latitude", lon="Longitude", zoom=11, color='current_remain_perc',  
@@ -175,6 +178,8 @@ def update_trends(start_date, end_date, dropdown_value):
     '''Update trendlines based on date range and selected hospital'''
     
     # Filter for dates
+    #start_date = dt.strptime(start_date, "%Y-%m-%d")
+    #end_date = dt.strptime(end_date, "%Y-%m-%d")
     df_sub = df_melt[(df_melt['date'] >= start_date) & (df_melt['date']<= end_date)]
     
     # Plot first hospital at start, when selected plot whatever is selected
