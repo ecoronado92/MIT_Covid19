@@ -4,4 +4,3 @@ dash
 gunicorn
 networkx
 pandas
-osmnx
