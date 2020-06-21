@@ -58,7 +58,7 @@ app.layout = html.Div(children=[
                                               html.Div(children=[
                                                    html.H6('Relevant Information'),
                                                    html.Img(className='infographic',
-                                                            src=app.get_asset_url("FaceMaskFlowchart.jpg"))
+                                                            src=app.get_asset_url("n95mask.png"))
                                               ])
                                             
                                           ]),
