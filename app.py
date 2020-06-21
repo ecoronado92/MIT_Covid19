@@ -28,6 +28,7 @@ df_melt = df.melt(id_vars=['Name', 'Place_id', 'Latitude', 'Longitude', 'Type'],
 df_melt['machine_capacity'] = 100
 df_melt['current_remain_perc'] = df_melt['current_count']/100 # turn into frequencies
 hospital_names = df.Name.unique()
+today_date = dt.today().date().strftime('%Y-%m-%d')
 
 
 # Layout
@@ -130,9 +131,11 @@ app.layout = html.Div(children=[
 )
 def update_map(map_date): 
     '''Update map based on date selected'''
-    
     # Filter for selected date
-    df_sub = df_melt[df_melt['date'] == map_date]
+    if map_date is None:
+        df_sub = df_melt[df_melt['date'] == today_date]
+    else:
+        df_sub = df_melt[df_melt['date'] == map_date]
     
     # Plot and update layout
     fig = px.scatter_mapbox(df_sub, lat="Latitude", lon="Longitude", zoom=11, color='current_remain_perc',  
