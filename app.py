@@ -12,6 +12,9 @@ from dash.dependencies import Input, Output, State
 # set up app
 app = dash.Dash(__name__)
 
+# Set server
+server = app.server
+
 # mapbox secret token
 token = 'pk.eyJ1IjoiZWNvcm9uYWRvOTIiLCJhIjoiY2tibnY1YTQ2MXd0MDJ5bnpkZHdkcHM3cCJ9.EbmklfwT4KGmUWqnDL6Wwg'
 
