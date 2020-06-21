@@ -49,7 +49,7 @@ app.layout = html.Div(children=[
                                                   max_date_allowed=dt(2020, 6, 20),
                                                   initial_visible_month=dt(2020, 6, 20).date() ,
                                                   date=dt(2020, 6, 20).date(),
-                                                  display_format='DD/MM/Y',
+                                                  display_format='MM/DD/Y',
                                                   month_format='MMM Do, YYYY'),
                                               
                                               html.Br(),
@@ -89,7 +89,7 @@ app.layout = html.Div(children=[
                                               html.H2('PPE Supply Trends'),
                                               dcc.DatePickerRange(
                                                   id="date-query",
-                                                  display_format='D/MM/Y',
+                                                  display_format='MM/DD/Y',
                                                   month_format='MMM Do, YYYY',
                                                   min_date_allowed=dt(2020, 4, 22),
                                                   max_date_allowed=dt(2020, 6, 21),
