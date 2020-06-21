@@ -19,7 +19,7 @@ server = app.server
 token = 'pk.eyJ1IjoiZWNvcm9uYWRvOTIiLCJhIjoiY2tibnY1YTQ2MXd0MDJ5bnpkZHdkcHM3cCJ9.EbmklfwT4KGmUWqnDL6Wwg'
 
 # Read data and pivot longer to be able to use plot colors per hospital
-df = pd.read_csv('data.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/diegomatuk/MIT_Covid19/master/data.csv')
 
 df_melt = df.melt(id_vars=['Name', 'Place_id', 'Latitude', 'Longitude', 'Type'], 
                   var_name='date', value_name='current_count')
