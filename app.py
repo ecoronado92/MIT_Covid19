@@ -46,8 +46,8 @@ app.layout = html.Div(children=[
                                               dcc.DatePickerSingle(
                                                   id='map-date',
                                                   min_date_allowed=dt(2020, 4, 22),
-                                                  max_date_allowed=dt.today(),#- timedelta(days=1),
-                                                  initial_visible_month=dt.today() ,
+                                                  max_date_allowed=dt.today().date()- timedelta(days=1),
+                                                  initial_visible_month=dt.today().date() ,
                                                   date=dt.today().date(),
                                                   display_format='DD/MM/Y',
                                                   month_format='MMM Do, YYYY'),
